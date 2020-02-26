@@ -31,7 +31,7 @@ public class ImportPipeline {
 		try {
 			validateAndConstructOptions(options);
 			PipelineRunner.run(options.projectId, options.dataflowControllerServiceAccount, options.bigQueryDataset,
-					options.tempBucket, options.gcsUri);
+					options.tempBucket, options.gcsUri, options.region, options.zone);
 		} catch (Exception e) {
 			if (options.verbose) {
 				throw new RuntimeException(e);

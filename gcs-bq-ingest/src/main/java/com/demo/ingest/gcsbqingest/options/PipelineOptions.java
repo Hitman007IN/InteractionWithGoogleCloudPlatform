@@ -15,7 +15,19 @@ public class PipelineOptions extends OptionsBase {
         help = "Print usage information.",
         defaultValue = "false")
     public boolean help;
+    
+    @Option(
+       name = "region",
+       help = "Specify the region to run the dataflow job",
+       defaultValue = "us-east1")
+    public String region;
 
+    @Option(
+       name = "zone",
+       help = "Specify the zone to run the dataflow job",
+       defaultValue = "us-east1-b")
+    public String zone;
+    
     @Option(
         name = "csv_delimiter",
         help = "The delimiter used to separator CSV columns.",

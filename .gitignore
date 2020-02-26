@@ -4,3 +4,10 @@ gcs-bq-ingest/.project
 gcs-bq-ingest/.settings/org.eclipse.core.resources.prefs
 gcs-bq-ingest/.settings/org.eclipse.jdt.core.prefs
 gcs-bq-ingest/.settings/org.eclipse.m2e.core.prefs
+DataflowInjestBigQuery/.classpath
+DataflowInjestBigQuery/.project
+DataflowInjestBigQuery/.settings/org.eclipse.core.resources.prefs
+DataflowInjestBigQuery/.settings/org.eclipse.jdt.apt.core.prefs
+DataflowInjestBigQuery/.settings/org.eclipse.jdt.core.prefs
+DataflowInjestBigQuery/.settings/org.eclipse.m2e.core.prefs
+DataflowInjestBigQuery/pom.xml.bak

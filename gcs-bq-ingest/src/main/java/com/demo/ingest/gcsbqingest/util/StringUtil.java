@@ -35,7 +35,8 @@ public class StringUtil {
 
 	public static String getGcsTempDir(String bucket) {
 		Preconditions.checkArgument(!Strings.isNullOrEmpty(bucket), "Bucket cannot be null or empty.");
-		return String.format("%s%s/temp", GCS_URI_PREFIX, bucket);
+		//return String.format("%s%s/temp", GCS_URI_PREFIX, bucket);
+		return bucket;
 	}
 
 	public static String generateGcsUri(String bucket, String path) {

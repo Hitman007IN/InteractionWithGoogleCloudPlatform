@@ -42,24 +42,25 @@ class ZipHandler extends BaseHandler {
 
 	@Override
 	public List<String> handle(InputReader reader) throws IOException {
-		ZipInputStream zis = new ZipInputStream(Channels.newInputStream(reader.getReadChannel()));
-
-		List<String> files = Lists.newArrayList();
-		ZipEntry entry = zis.getNextEntry();
-		while (entry != null) {
-			if (!entry.isDirectory()) {
-				OutputWriter writer = factory.getOutputWriter(Paths.get(entry.getName()).toString());
-				try (WritableByteChannel writeChannel = writer.getWriteChannel()) {
-					ByteStreams.copy(Channels.newChannel(zis), writeChannel);
-					files.add(writer.getName());
+		try(ZipInputStream zis = new ZipInputStream(Channels.newInputStream(reader.getReadChannel()))) {
+			
+			List<String> files = Lists.newArrayList();
+			ZipEntry entry = zis.getNextEntry();
+			while (entry != null) {
+				if (!entry.isDirectory()) {
+					OutputWriter writer = factory.getOutputWriter(Paths.get(entry.getName()).toString());
+					try (WritableByteChannel writeChannel = writer.getWriteChannel()) {
+						ByteStreams.copy(Channels.newChannel(zis), writeChannel);
+						files.add(writer.getName());
+					}
 				}
+
+				entry = zis.getNextEntry();
 			}
 
-			entry = zis.getNextEntry();
+			//zis.closeEntry();
+			//zis.close();
+			return files;
 		}
-
-		zis.closeEntry();
-		zis.close();
-		return files;
 	}
 }

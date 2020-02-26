@@ -1,0 +1,13 @@
+{
+  "name": "gcloudfunction-sendmail",
+  "version": "1.0.0",
+  "description": "Send emails with Nodemailer from Google Cloud for Empire",
+  "author": "Vishakh Rameshan",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "nodemailer": "^6.1.0"
+  }
+}

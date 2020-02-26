@@ -59,14 +59,14 @@ import com.google.common.base.Strings;
 public class PipelineRunner {
 
 	public static void run(String projectId, String dataflowServiceAccount, String datasetId, String tempBucket,
-			String gcsUri) throws IOException {
+			String gcsUri, String region, String zone) throws IOException {
 		String[] uriParts = StringUtil.splitGcsUri(gcsUri);
 		String bucket = uriParts[0];
 		String path = uriParts[1];
 
 		try {
 			List<String> uris = decompress(tempBucket, bucket, path);
-			runDataflowPipeline(projectId, dataflowServiceAccount, tempBucket, uris, datasetId);
+			runDataflowPipeline(projectId, dataflowServiceAccount, tempBucket, uris, datasetId, region, zone);
 		} finally {
 			cleanUp(tempBucket);
 		}
@@ -81,7 +81,7 @@ public class PipelineRunner {
 	}
 
 	private static void runDataflowPipeline(String projectId, @Nullable String serviceAccount, String tempBucket,
-			List<String> uris, String datasetId) {
+			List<String> uris, String datasetId, String region, String zone) {
 		GoogleCredentials credentials = GcpConfiguration.getInstance().getCredentials();
 		DataflowPipelineOptions options = PipelineOptionsFactory.as(DataflowPipelineOptions.class);
 		if (credentials != null) {
@@ -94,6 +94,8 @@ public class PipelineRunner {
 			options.setProject(projectId);
 		}
 		options.setTempLocation(String.format("%s/dataflow", StringUtil.getGcsTempDir(tempBucket)));
+		options.setRegion(region);
+		options.setZone(zone);
 		options.setRunner(DataflowRunner.class);
 		Pipeline p = Pipeline.create(options);
 
