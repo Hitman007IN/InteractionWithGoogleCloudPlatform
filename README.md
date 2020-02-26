@@ -19,4 +19,7 @@ Prerequisites
 - JDK 8+ is installed.
 - maven is installed
 
-java -jar target/gcs-bq-ingest-executable-0.0.1-SNAPSHOT.jar --region=asia-south1 --zone=asia-south1-b --gcp_project_id=flawless-mason-258102 --gcs_uri=gs://empire_landing_zone/input/activity.zip --bq_dataset=activity-dataset --temp_bucket=gs://empire_landing_zone/temp --gcp_credentials=/Users/vishakhrameshan/Documents/Workspace/InteractionWithGoogleCloudPlatform/flawless-mason-258102-6672dbdbc5ff.json --dataflow_controller_service_account=empire-gcs-dataflow-bq-compose@flawless-mason-258102.iam.gserviceaccount.com --verbose=true
+java -jar target/gcs-bq-ingest-executable-0.0.1-SNAPSHOT.jar --region=asia-south1 --zone=asia-south1-b --gcp_project_id=flawless-mason-258102 --gcs_uri=gs://empire_landing_zone/input/activity.zip --bq_dataset=activity_dataset --temp_bucket=gs://empire_landing_zone/temp --gcp_credentials=/Users/vishakhrameshan/Documents/Workspace/InteractionWithGoogleCloudPlatform/flawless-mason-258102-6672dbdbc5ff.json --dataflow_controller_service_account=empire-gcs-dataflow-bq-compose@flawless-mason-258102.iam.gserviceaccount.com --verbose=true
+
+
+Request failed with code 400, performed 0 retries due to IOExceptions, performed 0 retries due to unsuccessful status codes, HTTP framework says request can be retried, (caller responsible for retrying): https://dataflow.googleapis.com/v1b3/projects/flawless-mason-258102/locations/asia-south1/jobs
